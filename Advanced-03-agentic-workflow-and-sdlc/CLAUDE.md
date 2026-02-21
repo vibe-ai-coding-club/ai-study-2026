@@ -8,37 +8,32 @@ AI 학습 동아리 심화 과정 3주차 - Agentic Workflow와 SDLC에 대한 �
 Advanced-03-agentic-workflow-and-sdlc/
 ├── CLAUDE.md                          # 이 파일
 ├── docs/                              # 학습 자료 (Markdown → PPT 변환용)
-│   ├── 001-agentic-workflow-overview.md   # Agentic Workflow 개요
-│   ├── 002-agentic-design-patterns.md     # Agentic Design Patterns (4가지)
-│   ├── 003-agent-architectures.md         # Agent 아키텍처 심화
-│   ├── 004-sdlc-overview.md               # SDLC 개요와 전통적 모델
-│   ├── 005-ai-assisted-sdlc.md            # AI-Assisted SDLC
-│   ├── 006-agentic-sdlc.md               # Agentic SDLC
-│   ├── 007-agentic-frameworks.md          # 주요 Agentic 프레임워크
-│   └── 008-hands-on-guide.md              # 실습 가이드
-├── examples/                          # 실습 코드 (~15분씩)
-│   ├── 01_react_agent.py              # ReAct Agent (Tool Use + Planning)
-│   ├── 02_reflection_agent.py         # Reflection Agent (자기 성찰)
-│   ├── 03_multi_agent_pipeline.py     # Multi-Agent Pipeline (역할 분담)
+│   ├── 01-agentic-workflow-and-patterns.md  # 이론 1: Agentic Workflow & Design Patterns (~15분)
+│   ├── 02-agent-architectures.md            # 이론 2: Agent 아키텍처 스펙트럼 (~12분)
+│   ├── 03-sdlc-and-ai.md                   # 이론 3: SDLC와 AI (~13분)
+│   └── 04-hands-on.md                      # 실습: 프레임워크 비교 + 실습 가이드 (~20분)
+├── examples/                          # 실습 코드
+│   ├── 01_react_agent.py              # 실습 1: ReAct Agent (Tool Use + Planning)
+│   ├── 02_reflection_agent.py         # 실습 2: Reflection Agent (자기 성찰)
 │   ├── .env.sample                    # 환경 변수 샘플
 │   └── requirements.txt              # 의존성
 └── ...
 ```
 
-## 커리큘럼 순서
-1. Agentic Workflow 개요 - 정의, 구성요소, 기본 루프
-2. Design Patterns - Reflection, Tool Use, Planning, Multi-Agent
-3. Agent 아키텍처 - Prompt Chaining → Orchestrator-Workers 스펙트럼
-4. SDLC 개요 - Waterfall, Agile, DevOps
-5. AI-Assisted SDLC - SDLC 각 단계별 AI 활용
-6. Agentic SDLC - Agent가 자율적으로 수행하는 SDLC
-7. 프레임워크 - LangGraph, CrewAI, AutoGen, Agents SDK
-8. 실습 가이드 - ReAct Agent, Reflection, Claude Code, CrewAI
+## 발표 구성 (1시간)
+
+### 이론 (40분)
+1. **Agentic Workflow & Patterns** (~15분) - 정의, 구성요소, 기본 루프, 4가지 Design Patterns, Genspark 사례
+2. **Agent 아키텍처** (~12분) - 5단계 스펙트럼 (Prompt Chaining → Autonomous Agent), 선택 가이드
+3. **SDLC와 AI** (~13분) - SDLC 기본 → AI-Assisted → Agentic SDLC, 도구 소개
+
+### 실습 (20분)
+4. **실습** (~20분) - 프레임워크 비교표 + ReAct Agent, Reflection, Claude Code 실습
 
 ## 컨벤션
-- 문서 번호: `001-`, `002-` 형태
+- 문서 번호: `01-`, `02-` 형태
 - 다이어그램: Mermaid 문법 사용
-- 실습 코드: Python 기반 (anthropic, crewai, langgraph)
+- 실습 코드: Python 기반 (anthropic)
 - 학습 자료는 PPT 발표용으로 작성 (간결, 시각적)
 
 ## 상위 프로젝트 구조
