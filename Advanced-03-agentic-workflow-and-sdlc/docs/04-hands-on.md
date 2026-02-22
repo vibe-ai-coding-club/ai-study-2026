@@ -272,7 +272,73 @@ def reflection_agent(task, max_iterations=3, threshold=8):
 
 ---
 
-## 실습 3: Claude Code로 Agentic SDLC 체험
+## 실습 3: LangGraph Multi-Agent Pipeline
+
+> LangGraph StateGraph로 멀티에이전트 파이프라인을 구현하고, SSE로 실시간 시각화
+
+### 아키텍처
+
+```mermaid
+flowchart LR
+    O["Orchestrator<br/>작업 분해"] --> R["Retriever<br/>템플릿 검색"]
+    R --> A["Analyzer<br/>패턴 분석"]
+    A --> G["Generator<br/>XML 생성"]
+    G --> V["Validator<br/>검증"]
+    V -->|"실패"| G
+    V -->|"통과"| Done["완료"]
+```
+
+### 핵심 코드
+
+```python
+# StateGraph 구성
+graph = StateGraph(WorkflowState)
+
+graph.add_node("orchestrate", orchestrate)
+graph.add_node("retrieve", retrieve)
+graph.add_node("analyze", analyze)
+graph.add_node("generate", generate)
+graph.add_node("validate", validate)
+
+graph.add_edge(START, "orchestrate")
+graph.add_edge("orchestrate", "retrieve")
+graph.add_edge("retrieve", "analyze")
+graph.add_edge("analyze", "generate")
+graph.add_edge("generate", "validate")
+
+# 조건부 엣지: 검증 실패 시 Generator로 재시도
+graph.add_conditional_edges(
+    "validate", should_retry,
+    {"retry": "generate", "complete": END}
+)
+```
+
+### 실행 방법
+
+```bash
+# 패키지 설치
+pip install langgraph fastapi uvicorn
+
+# 서버 실행
+cd examples/03_langgraph_multi_agent
+python server.py
+
+# 브라우저에서 접속
+open http://localhost:8000
+```
+
+### 핵심 학습 포인트
+
+| 개념                   | 설명                                        |
+| ---------------------- | ------------------------------------------- |
+| **StateGraph**         | 상태 기반 그래프로 에이전트 파이프라인 구성  |
+| **Conditional Edge**   | 검증 결과에 따라 재시도/완료 분기            |
+| **SSE Streaming**      | Server-Sent Events로 실시간 진행 상황 전달  |
+| **Evaluator-Optimizer**| Generator ↔ Validator 반복으로 품질 개선     |
+
+---
+
+## 실습 4: Claude Code로 Agentic SDLC 체험
 
 > 실제 AI Agent 도구로 SDLC 단계를 수행
 
@@ -330,7 +396,14 @@ $ claude
 - [ ] 반복 개선 루프 동작 확인
 - [ ] 반복 횟수에 따른 품질 변화 관찰
 
-### 실습 3: Agentic SDLC (Claude Code)
+### 실습 3: LangGraph Multi-Agent Pipeline
+
+- [ ] `python server.py`로 서버 실행
+- [ ] 브라우저에서 파이프라인 5단계 진행 확인
+- [ ] Validator 실패 → Generator 재시도 → 최종 통과 확인
+- [ ] 최종 XML 결과 표시 확인
+
+### 실습 4: Agentic SDLC (Claude Code)
 
 - [ ] Claude Code로 프로젝트 생성
 - [ ] Agent의 SDLC 단계별 행동 관찰
@@ -340,8 +413,9 @@ $ claude
 
 ## 정리
 
-| 실습       | 패턴             | 핵심 학습            |
-| ---------- | ---------------- | -------------------- |
-| **실습 1** | ReAct / Tool Use | Agent 기본 루프 이해 |
-| **실습 2** | Reflection       | 자기 개선 패턴 이해  |
-| **실습 3** | Agentic SDLC     | 실무 AI Agent 체험   |
+| 실습       | 패턴                | 핵심 학습                    |
+| ---------- | ------------------- | ---------------------------- |
+| **실습 1** | ReAct / Tool Use    | Agent 기본 루프 이해         |
+| **실습 2** | Reflection          | 자기 개선 패턴 이해          |
+| **실습 3** | Multi-Agent / Graph | StateGraph + 조건부 분기     |
+| **실습 4** | Agentic SDLC        | 실무 AI Agent 체험           |

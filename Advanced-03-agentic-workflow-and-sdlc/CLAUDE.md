@@ -15,6 +15,9 @@ Advanced-03-agentic-workflow-and-sdlc/
 ├── examples/                          # 실습 코드
 │   ├── 01_react_agent.py              # 실습 1: ReAct Agent (Tool Use + Planning)
 │   ├── 02_reflection_agent.py         # 실습 2: Reflection Agent (자기 성찰)
+│   ├── 03_langgraph_multi_agent/      # 실습 3: LangGraph Multi-Agent Pipeline
+│   │   ├── server.py                  # FastAPI + LangGraph 백엔드
+│   │   └── index.html                 # Tailwind 프론트엔드
 │   ├── .env.sample                    # 환경 변수 샘플
 │   └── requirements.txt              # 의존성
 └── ...
@@ -28,7 +31,7 @@ Advanced-03-agentic-workflow-and-sdlc/
 3. **SDLC와 AI** (~13분) - SDLC 기본 → AI-Assisted → Agentic SDLC, 도구 소개
 
 ### 실습 (20분)
-4. **실습** (~20분) - 프레임워크 비교표 + ReAct Agent, Reflection, Claude Code 실습
+4. **실습** (~20분) - 프레임워크 비교표 + ReAct Agent, Reflection, LangGraph Pipeline, Claude Code 실습
 
 ## 컨벤션
 - 문서 번호: `01-`, `02-` 형태
