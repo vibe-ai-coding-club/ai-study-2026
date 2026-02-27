@@ -1,0 +1,12 @@
+# Advanced-04: Sandbox & Dynamic Code Execution
+# 실습 1~3은 Python stdlib만 사용 (추가 설치 불필요)
+#
+# 아래 패키지는 Anthropic API 연동 시 필요:
+anthropic
+python-dotenv
+
+# 선택적: E2B 클라우드 Sandbox API 연동 시
+# e2b-code-interpreter
+
+# 선택적: Docker 기반 실행 시
+# docker
